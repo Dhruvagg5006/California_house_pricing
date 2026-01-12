@@ -1,3 +1,104 @@
-<h1>
-    Hello World
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>California House Price Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #1f4037, #99f2c8);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 420px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1f4037;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #145a32;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1f4037;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>California House Price Prediction</h2>
+
+    <form action="/predict" method="post">
+
+        <input type="number" step="any" name="MedInc" placeholder="Median Income" required>
+        <input type="number" step="any" name="HouseAge" placeholder="House Age" required>
+        <input type="number" step="any" name="AveRooms" placeholder="Average Rooms" required>
+        <input type="number" step="any" name="AveBedrms" placeholder="Average Bedrooms" required>
+        <input type="number" step="any" name="Population" placeholder="Population" required>
+        <input type="number" step="any" name="AveOccup" placeholder="Average Occupancy" required>
+        <input type="number" step="any" name="Latitude" placeholder="Latitude" required>
+        <input type="number" step="any" name="Longitude" placeholder="Longitude" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+<footer>
+    © 2026 | California Housing Price Prediction | ML + Flask
+</footer>
+
+</body>
+</html>
